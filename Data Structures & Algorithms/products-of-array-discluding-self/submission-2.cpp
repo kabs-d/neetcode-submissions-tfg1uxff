@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+              vector<int> products;
+        vector<int> pre_prod;
+        vector<int> post_prod;
+        int n = nums.size();
+        int left=1; int right = 1;
+        for(int i=0; i<n;i++){
+        pre_prod.push_back(left);
+        post_prod.push_back(right);
+        left=left*nums[i];
+        right = right*nums[n-1-i];
+        }
+        
+        for(int i =0; i<n;i++){
+            products.push_back(pre_prod[i]*post_prod[n-1-i]);
+        }
+        return products;
+    }
+};
